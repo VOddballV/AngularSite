@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="newSite" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="CSS/Styles.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div class="navbar">
+        <button class="btn btn-default" ui-sref="home">Home</button>
+        <button class="btn btn-default" ui-sref="about">About</button>
+    </div>
+
+        <!--View-->
+        <div ui-view></div>
+
+    <!--AngularJS-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="AngularJSFiles/app.js"></script>
+
+    <!--Bootstrap-->
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+</html>

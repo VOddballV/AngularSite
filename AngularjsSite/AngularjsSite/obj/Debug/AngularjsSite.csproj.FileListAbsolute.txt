@@ -1,0 +1,14 @@
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\AngularjsSite.dll.config
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\AngularjsSite.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\AngularjsSite.pdb
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\Newtonsoft.Json.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Net.Http.Formatting.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Web.Http.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Web.Http.WebHost.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\Newtonsoft.Json.xml
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Net.Http.Formatting.xml
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Web.Http.xml
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\bin\System.Web.Http.WebHost.xml
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\obj\Debug\AngularjsSite.csprojResolveAssemblyReference.cache
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\obj\Debug\AngularjsSite.dll
+c:\users\jcarder.access411\documents\visual studio 2013\Projects\AngularjsSite\AngularjsSite\obj\Debug\AngularjsSite.pdb

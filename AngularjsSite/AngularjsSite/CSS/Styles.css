@@ -1,0 +1,37 @@
+﻿.navbar {
+    text-align: center;
+}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter-active {
+  opacity:1;
+}
+
+/* now the element will fade out before it is removed from the DOM */
+.fade.ng-leave {
+  transition:0.5s linear all;
+  opacity:1;
+}
+.fade.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+.PageLoad.ng-enter{
+
+    animation-name: openDoor;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+ /* The animation code */
+@keyframes openDoor {
+    0%{height:0; animation-timing-function:initial;}
+    100% {height:100px; animation-timing-function: initial;}
+         
+}
