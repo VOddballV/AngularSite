@@ -1,44 +1,54 @@
-﻿(function () {
+﻿
     var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
     app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'AngularJSFiles/View/home.html'
+                templateUrl: 'AngularJSFiles/View/home.html',
+                controller: 'homeController'
             })
             .state('about', {
                 url: '/about',
                 templateUrl: 'AngularJSFiles/View/about.html'
             })
+            .state('addUser', {
+                url: '/AddUser',
+                templateUrl: 'AngularJSFiles/View/addUser.html'
+            })
     });
 
-    app.controller('StoreController', function () {
-        this.products = items;
-    });
-    var items = [
-        {
-            name: 'name1'
-        },
-        {
-            name: 'name2'
-        },
-        {
-            name: 'name3'
-        },
-        {
-            name: 'name4'
-        },
-        {
-            name: 'name5'
-        },
-        {
-            name: 'name6'
-        },
-        {
-            name: 'name7'
+    app.controller('homeController', function ($scope, listUsers) {
+        $scope.listUsers = listusers;
+        $scope.UserInfoDetails = UserInfo;
+
+        $scope.add = function (index) {
+            listUsers.data.push(UserInfoDetails);
         }
-    ];
-})();
+    });
+    app.factory("listUsers", function () {
+        var listUsers = {};
+        listUsers.data = [{
+            id: "1",
+            title: "Item 1"
+        }, {
+            id: "2",
+            title: "Item 2"
+        }, {
+            id: "3",
+            title: "Item 3"
+        }, {
+            id: "4",
+            title: "Item 4"
+        }];
+        return listUsers;
+    });
+    var UserInfo = {
+        FirstName: '',
+        LastName: '',
+        Email: '',
+        PhoneNumber: ''
+    }
+
 
 

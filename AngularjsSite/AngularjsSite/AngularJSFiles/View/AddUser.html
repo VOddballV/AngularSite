@@ -1,0 +1,12 @@
+﻿<div>
+    <h1>Edit team members names</h1>
+        New User: <input ng-model="UserInfoDetail.FirstName" />
+    <br/>
+    <button ng-click="add()" class="btn">Submit</button>
+    <div ng-repeat="user in listUsers.data">
+        <div class="block">
+            {{user.title}}
+        </div>
+    </div>
+</div>
+
