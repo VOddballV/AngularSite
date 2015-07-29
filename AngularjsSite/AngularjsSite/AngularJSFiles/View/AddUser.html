@@ -1,12 +1,63 @@
 ﻿<div>
-    <h1>Edit team members names</h1>
-        New User: <input ng-model="UserInfoDetail.FirstName" />
-    <br/>
-    <button ng-click="add()" class="btn">Submit</button>
-    <div ng-repeat="user in listUsers.data">
-        <div class="block">
-            {{user.title}}
+    <form name="addUser" novalidate>
+        <h1>Edit team members names</h1>
+        <br />
+        <div>
+            <div style="float: left;">
+                <label>Title:</label>
+                <br />
+                <label>First Name:</label>
+                <br />
+                <label>Last Name:</label>
+                    <br />
+                <label>Email:</label>
+                    <br />
+                <label>Phone Number:</label>
+                    <br />
+                    <br />
+            </div>
+            <div>
+                <input id="title" type="text" ng-model="UserDetails.title" required /><img src="../../Content/x.png" ng-hide="UserDetails.title" />
+                <br />
+                <input id="FirstName" type="text" ng-model="UserDetails.FirstName" required /><img src="../../Content/x.png" ng-hide="UserDetails.FirstName" />
+                <br />
+                <input id="LastName" type="text" ng-model="UserDetails.LastName" required /><img src="../../Content/x.png" ng-hide="UserDetails.LastName" />
+                <br />
+                <input id="Eamil" type="text" ng-model="UserDetails.Email" required /><img src="../../Content/x.png" ng-hide="UserDetails.Email" />
+                <br />
+                <input id="PhoneNumber" type="text" ng-model="UserDetails.PhoneNumber" required /><img src="../../Content/x.png" ng-hide="UserDetails.PhoneNumber" />
+            </div>
         </div>
+        <br />
+        <br />
+    </form>
+    <button ng-click="add()" class="btn" ng-disabled="addUser.$invalid">Add</button>
+    <div ng-repeat="user in listUsers.data track by $index">
+        <div class="userInfoBox">
+            <div id="userInfoBoxText">
+                <label>Title:</label>
+                <br />
+                <label>FirstName:</label>
+                <br />
+                <label>LastName:</label>
+                <br />
+                <label>Email:</label>
+                <br />
+                <label>PhoneNumber:</label>
+                <br />
+            </div>
+            <div id="userInfoBoxInfo">
+                <label>{{user.title}}</label>
+                <br />
+                <label>{{user.FirstName}}</label>
+                <br />
+                <label>{{user.LastName}}</label>
+                <br />
+                <label>{{user.Email}}</label>
+                <br />
+                <label>{{user.PhoneNumber}}</label>
+            </div>
+        </div><button id="userDeleteButton" class="btn" ng-click="delete($index)">Delete</button>
     </div>
 </div>
 

@@ -46,3 +46,32 @@
     100% {height:100px; animation-timing-function: initial;}
          
 }
+
+.userInfoBox{
+    height: 130px;
+    width: 300px;
+    background-color: navy;
+    border-radius: 25px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#userInfoBoxText{
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+    padding-left: 10px;
+    float: left;
+}
+
+#userInfoBoxInfo{
+    padding-top: 5px;
+    text-align: left;
+    color: white;
+}
+
+#userDeleteButton {
+    text-align: center;
+}
+

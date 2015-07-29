@@ -75,6 +75,7 @@
     <Content Include="AngularJSFiles\app.js" />
     <Content Include="AngularJSFiles\View\about.html" />
     <Content Include="AngularJSFiles\View\AddUser.html" />
+    <Content Include="Content\x.png" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\Styles.css" />
     <Content Include="index.html" />

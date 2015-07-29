@@ -1,6 +1,6 @@
 ﻿
     var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('home', {
@@ -14,41 +14,48 @@
             })
             .state('addUser', {
                 url: '/AddUser',
-                templateUrl: 'AngularJSFiles/View/addUser.html'
+                templateUrl: 'AngularJSFiles/View/addUser.html',
+                controller: 'addUserController'
             })
-    });
+    }]);
 
-    app.controller('homeController', function ($scope, listUsers) {
-        $scope.listUsers = listusers;
-        $scope.UserInfoDetails = UserInfo;
+    app.controller('homeController', ['$scope', function ($scope) {
 
+    }]);
+
+    app.controller('addUserController', ['$scope', 'listUsers', function ($scope, listUsers) {
+        $scope.listUsers = listUsers;
+        $scope.UserDetails = UserInfo;
         $scope.add = function (index) {
-            listUsers.data.push(UserInfoDetails);
+            listUsers.data.push($scope.UserDetails);
+            console.log($scope.UserTitle);
+            $scope.UserDetails = {};
         }
-    });
-    app.factory("listUsers", function () {
+        $scope.delete = function (index) {
+            listUsers.data.splice(index, 1);
+        }
+    }]);
+
+    app.factory('listUsers', function () {
         var listUsers = {};
         listUsers.data = [{
-            id: "1",
-            title: "Item 1"
+            id: '1',
+            title: 'Item 1'
         }, {
-            id: "2",
-            title: "Item 2"
-        }, {
-            id: "3",
-            title: "Item 3"
-        }, {
-            id: "4",
-            title: "Item 4"
+            id: '2',
+            title: 'Item 2'
         }];
         return listUsers;
     });
+
     var UserInfo = {
-        FirstName: '',
-        LastName: '',
-        Email: '',
-        PhoneNumber: ''
-    }
+            title: '',
+            FirstName:'',
+            LastName:'',
+            Email:'',
+            PhoneNumber:'',
+    };
+
 
 
 
