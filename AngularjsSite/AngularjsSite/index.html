@@ -12,6 +12,16 @@
         <button class="btn btn-default" ui-sref="about">About</button>
         <button class="btn btn-default" ui-sref="addUser">Add user</button>
     </div>
+    <div class="Menu" ng-controller="homeController">
+        <div style="padding: 10px 10px;">
+            <div ng-repeat="item in MenuItems.data">
+                <button ng-click="menuButtonClick(item.id)" class="buttonCAASS">{{item.title}}</button>
+                <div class="subMenu">
+                    <div ng-show="item.show" ng-repeat="subItems in subMenuItems.data">{{subItems.title}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!--View-->
     <div ui-view></div>
 
@@ -19,8 +29,8 @@
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-ui-router.min.js"></script>
     <script src="Scripts/jquery-2.1.4.min.js"></script>
-    <script src="Scripts/angular-animate.min.js"></script>
     <script src="AngularJSFiles/app.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
 
     <!--Bootstrap-->
     <script src="Scripts/bootstrap.min.js"></script>

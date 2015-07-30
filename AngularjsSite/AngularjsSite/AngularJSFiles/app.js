@@ -1,5 +1,5 @@
 ﻿
-    var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
+var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
@@ -19,17 +19,32 @@
             })
     }]);
 
-    app.controller('homeController', ['$scope', function ($scope) {
-
+    app.controller('homeController', ['$scope', 'MenuItems', 'subMenuItems', function ($scope, MenuItems, subMenuItems) {
+        $scope.MenuItems = MenuItems;
+        $scope.subMenuItems = subMenuItems;
+        $scope.menuButtonClick = function (id) {
+            for (i = 0; i < MenuItems.data.length; i++) {
+                console.log("id = " + id)
+                console.log("i = " + i)
+                console.log(i==id)
+                if (i == id) {
+                    $scope.MenuItems.data[i].show = true;
+                }
+                else {
+                    $scope.MenuItems.data[i].show = false;
+                }
+            }
+        }
     }]);
 
     app.controller('addUserController', ['$scope', 'listUsers', function ($scope, listUsers) {
         $scope.listUsers = listUsers;
         $scope.UserDetails = UserInfo;
+        console.log($scope.UserDetails);
         $scope.add = function (index) {
             listUsers.data.push($scope.UserDetails);
-            console.log($scope.UserTitle);
-            $scope.UserDetails = {};
+            console.log($scope.UserDetails);
+            $scope.UserDetails = null;
         }
         $scope.delete = function (index) {
             listUsers.data.splice(index, 1);
@@ -39,10 +54,10 @@
     app.factory('listUsers', function () {
         var listUsers = {};
         listUsers.data = [{
-            id: '1',
+            id: '0',
             title: 'Item 1'
         }, {
-            id: '2',
+            id: '1',
             title: 'Item 2'
         }];
         return listUsers;
@@ -56,6 +71,41 @@
             PhoneNumber:'',
     };
 
+    app.factory('MenuItems', function () {
+        var MenuItems = {};
+        MenuItems.data = [{
+            id: '0',
+            title: 'Item 1',
+            show: false
+        }, {
+            id: '1',
+            title: 'Item 2',
+            show: false
+        }, {
+            id: '2',
+            title: 'Item 3',
+            show: false
+        }];
+        return MenuItems;
+    });
+
+    app.factory('subMenuItems', function () {
+        var subMenuItems = {};
+        subMenuItems.data = [{
+            id: '0',
+            title: 'subItem 1',
+            show: false
+        }, {
+            id: '1',
+            title: 'subItem 2',
+            show: false
+        }, {
+            id: '2',
+            title: 'subItem 3',
+            show: false
+        }];
+        return subMenuItems;
+    });
 
 
 
