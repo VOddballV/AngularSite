@@ -21,17 +21,25 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
 
     app.controller('homeController', ['$scope', 'MenuItems', 'subMenuItems', function ($scope, MenuItems, subMenuItems) {
         $scope.MenuItems = MenuItems;
-        $scope.subMenuItems = subMenuItems;
         $scope.menuButtonClick = function (id) {
+            $scope.items = [];
+            for (b = 0; b < MenuItems.data.length; b++) {
+                $scope.MenuItems.data[b].show = false
+            }
+
             for (i = 0; i < MenuItems.data.length; i++) {
-                console.log("id = " + id)
-                console.log("i = " + i)
-                console.log(i==id)
                 if (i == id) {
                     $scope.MenuItems.data[i].show = true;
-                }
-                else {
-                    $scope.MenuItems.data[i].show = false;
+                    var items = [];
+                    for (c = 0; c < subMenuItems.data.length; c++) {
+                        //console.log("C = " + c);
+                        //console.log(subMenuItems.data[c])
+                        //console.log(i == subMenuItems.data[c].subid)
+                        if (i == subMenuItems.data[c].subid) {
+                            items.push(subMenuItems.data[c]);
+                        }
+                    }
+                    $scope.items = items;
                 }
             }
         }
@@ -92,17 +100,21 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
     app.factory('subMenuItems', function () {
         var subMenuItems = {};
         subMenuItems.data = [{
-            id: '0',
+            subid: '0',
             title: 'subItem 1',
-            show: false
+            show: true
         }, {
-            id: '1',
+            subid: '0',
             title: 'subItem 2',
-            show: false
+            show: true
         }, {
-            id: '2',
+            subid: '1',
             title: 'subItem 3',
-            show: false
+            show: true
+        }, {
+            subid: '2',
+            title: 'subItem 4',
+            show: true
         }];
         return subMenuItems;
     });

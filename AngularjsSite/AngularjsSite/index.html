@@ -16,8 +16,8 @@
         <div style="padding: 10px 10px;">
             <div ng-repeat="item in MenuItems.data">
                 <button ng-click="menuButtonClick(item.id)" class="buttonCAASS">{{item.title}}</button>
-                <div class="subMenu">
-                    <div ng-show="item.show" ng-repeat="subItems in subMenuItems.data">{{subItems.title}}</div>
+                <div class="subMenu" ng-hide="!item.show">
+                    <div ng-hide="!item.show" ng-repeat="subItems in items" class="subMenuItems">{{subItems.title}}</div>
                 </div>
             </div>
         </div>
