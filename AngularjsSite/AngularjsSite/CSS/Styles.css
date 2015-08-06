@@ -119,6 +119,8 @@
     animation-name: enterMenu;
     animation-duration: 2s;
     animation-fill-mode: forwards;
+    float:left;
+    margin-right: 50px;
  }
 
   @keyframes enterMenu {
@@ -133,7 +135,7 @@
 
     @keyframes enterSubMenu {
     0%{height: 2em; animation-timing-function:initial;}
-    100% {height: 1000px; animation-timing-function: initial;}  
+    100% {height: auto; animation-timing-function: initial;}  
  }
     .subMenu{
         margin: 0px 20px 0px 20px;
@@ -141,20 +143,66 @@
         width: 230px;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
-        animation-name: enterSubMenu;
-        animation-duration: 1s;
-        animation-fill-mode: forwards;
-        transition: height 1s;
+        -webkit-transition:all linear 0.5s;
+        transition: all linear 0.5s;
+        height: 200px;
+        z-index: 5;
+
     }
 
-    /*.subMenu.ng-enter{
+    .subMenu.ng-hide{
+        position: absolute;
+        top: -100px;
+    }
+    .subMenu.ng-hide-add-active, .subMenu.ng-hide-remove{
         height: 0px;
-        -webkit-transition:1s linear all;
-        transition:1s linear all;
-    } 
-    .subMenu.ng-enter-active{
-        height: 300px;
+        display:none!important;
+    }
+
+    .subMenu.ng-hide-add, ng-hide-remove-active{
+        height: 200px;
+        display:none!important;
+
+    }
+
+    /*.subMenu.ng-hide-add{
+        height: 200px;
+        display:none!important;
+
+    }
+
+    .subMenu.ng-hide-add.ng-hide-add-active{
+        height: 0px;
+        display:none!important;
     }*/
+
+    /*.subMenuItems.ng-hide-add, .subMenuItems.ng-hide-add-active{
+        opacity: 0;
+        padding-left: 30px;
+        transition: all ease 250ms;
+                display:none!important;
+    }
+
+    .subMenuItems.ng-hide-remove-stagger{
+        transition-delay:0.3s;
+        transition-duration: 0s;
+                display:none!important;
+
+    }
+
+    .subMenuItems.ng-hide-remove, .subMenuItems.ng-hide-remove-active{
+        opacity: 1;
+        padding-left: 0px;
+                display:none!important;
+    }*/
+
+    .viewHolder{
+        float:left;
+        z-index: 1;
+        background-color: teal;
+    }
+
+
     /*.subMenu.ng-enter{
         margin: 0px 20px 0px 20px;
         background: white;

@@ -12,7 +12,7 @@
         <button class="btn btn-default" ui-sref="about">About</button>
         <button class="btn btn-default" ui-sref="addUser">Add user</button>
     </div>
-    <div class="Menu" ng-controller="homeController">
+    <div class="Menu viewHolder" ng-controller="homeController">
         <div style="padding: 10px 10px;">
             <div ng-repeat="item in MenuItems.data">
                 <button ng-click="menuButtonClick(item.id)" class="buttonCAASS">{{item.title}}</button>
@@ -23,7 +23,9 @@
         </div>
     </div>
         <!--View-->
-    <div ui-view></div>
+    <div class="viewHolder">
+        <div ui-view></div>
+    </div>
 
     <!--AngularJS-->
     <script src="Scripts/angular.min.js"></script>
