@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CAASS8ModelStoreContainer" CdmEntityContainer="CAASS8Entities">
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="CAASS8Model.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="EMailID" ColumnName="EMailID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="EMailTypeID" ColumnName="EMailTypeID" />
+          <ScalarProperty Name="EmailSMSProviderID" ColumnName="EmailSMSProviderID" />
+          <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CAASS8Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserLevelID" ColumnName="UserLevelID" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Superuser" ColumnName="Superuser" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="c_date" ColumnName="c_date" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="Account_EMailID" ColumnName="Account_EMailID" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+          <ScalarProperty Name="ForgotCount" ColumnName="ForgotCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

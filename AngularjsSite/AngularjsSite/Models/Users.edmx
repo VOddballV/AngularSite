@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CAASS8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EMailID" />
+          </Key>
+          <Property Name="EMailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="EMailTypeID" Type="int" Nullable="false" />
+          <Property Name="EmailSMSProviderID" Type="int" />
+          <Property Name="EMailAddress" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="IsPrimary" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserLevelID" Type="int" Nullable="false" />
+          <Property Name="DistrictID" Type="int" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Superuser" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="c_date" Type="datetime" Nullable="false" />
+          <Property Name="SID" Type="varchar" MaxLength="512" />
+          <Property Name="Account_EMailID" Type="int" />
+          <Property Name="Locked" Type="bit" Nullable="false" />
+          <Property Name="RetryCount" Type="int" Nullable="false" />
+          <Property Name="ForgotCount" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Users__Account_E__7DD1A355">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EMailID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Account_EMailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAASS8ModelStoreContainer">
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Users__Account_E__7DD1A355" Association="Self.FK__Users__Account_E__7DD1A355">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAASS8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EMailID" />
+          </Key>
+          <Property Name="EMailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="EMailTypeID" Type="Int32" Nullable="false" />
+          <Property Name="EmailSMSProviderID" Type="Int32" />
+          <Property Name="EMailAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Account_E__7DD1A355" FromRole="Email" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLevelID" Type="Int32" Nullable="false" />
+          <Property Name="DistrictID" Type="Int32" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Superuser" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="c_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SID" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Account_EMailID" Type="Int32" />
+          <Property Name="Locked" Type="Boolean" Nullable="false" />
+          <Property Name="RetryCount" Type="Int32" Nullable="false" />
+          <Property Name="ForgotCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Email" Relationship="Self.FK__Users__Account_E__7DD1A355" FromRole="Users" ToRole="Email" />
+        </EntityType>
+        <Association Name="FK__Users__Account_E__7DD1A355">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EMailID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Account_EMailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAASS8Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emails" EntityType="Self.Email" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Users__Account_E__7DD1A355" Association="Self.FK__Users__Account_E__7DD1A355">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAASS8ModelStoreContainer" CdmEntityContainer="CAASS8Entities">
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="CAASS8Model.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="EMailID" ColumnName="EMailID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="EMailTypeID" ColumnName="EMailTypeID" />
+                <ScalarProperty Name="EmailSMSProviderID" ColumnName="EmailSMSProviderID" />
+                <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CAASS8Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLevelID" ColumnName="UserLevelID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Superuser" ColumnName="Superuser" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="c_date" ColumnName="c_date" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Account_EMailID" ColumnName="Account_EMailID" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="ForgotCount" ColumnName="ForgotCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

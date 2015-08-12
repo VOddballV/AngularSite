@@ -17,6 +17,11 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
                 templateUrl: 'AngularJSFiles/View/addUser.html',
                 controller: 'addUserController'
             })
+            .state('Movies', {
+                url: '/Movies',
+                templateUrl: 'AngularJSFiles/View/Movies.html',
+                controller: 'MoviesController'
+            })
     }]);
 
     app.controller('homeController', ['$scope', 'MenuItems', 'subMenuItems', function ($scope, MenuItems, subMenuItems) {
@@ -45,7 +50,7 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
         }
     }]);
 
-    app.controller('addUserController', ['$scope', 'listUsers', function ($scope, listUsers) {
+    app.controller('addUserController', ['$scope', 'listUsers', 'UserService', function ($scope, listUsers, UserService) {
         $scope.listUsers = listUsers;
         $scope.UserDetails = UserInfo;
         console.log($scope.UserDetails);
@@ -57,6 +62,36 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
         $scope.delete = function (index) {
             listUsers.data.splice(index, 1);
         }
+        getUsers();
+
+        function getUsers() {
+            UserService.getUsers()
+            .success(function (users) {
+                $scope.users = users;
+            })
+            .error(function (error) {
+                $scope.status = 'Unable to load user Data: ' + error.message;
+            });
+        }
+    }]);
+
+    app.controller("MoviesController", ["$scope", "$http", function ($scope, $http) {
+        
+        var movies = [
+            { title: "KellysHeroes", rating: "PG", year: 1980, plot: "What with them negative waves" },
+            { title: "StarWars V", rating: "PG-13", year: 2015, plot: "" },
+            { title: "StarTrek", rating: "PG-13", year: 2013, plot: "Startek iz the best" }
+        ];
+
+        $scope.movies = movies;
+        $scope.removeMovie = function (index) {
+            $scope.movies.splice(index, 1);
+        }
+
+        $scope.selectMovie = function (index) {
+            $scope.movie = movie
+        }
+
     }]);
 
     app.factory('listUsers', function () {
@@ -118,6 +153,16 @@ var app = angular.module('newSite', ['ui.router', 'ngAnimate']);
         }];
         return subMenuItems;
     });
+
+    app.factory('UserService', ['$http', function ($http) {
+        var urlBase = "http://localhost:52112/Api";
+        var UserService = {};
+        UserService.getUsers = function () {
+            return $http.get(urlBase + '/Users')
+        }
+
+        return UserService;
+    }]);
 
 
 
